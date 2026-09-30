@@ -50,3 +50,80 @@ Student::Student(const string& name, int age, double averageGrade,
 
     objectCount++;
 }
+
+Student::Student(const Student& other)
+    : name(other.name),
+      age(other.age),
+      averageGrade(other.averageGrade),
+      course(other.course),
+      group(other.group)
+{
+    objectCount++;
+}
+
+Student::~Student()
+{
+    objectCount--;
+
+    cout << "Объект Student уничтожен: " << name << endl;
+}
+
+string Student::getName() const
+{
+    return name;
+}
+
+int Student::getAge() const
+{
+    return age;
+}
+
+double Student::getAverageGrade() const
+{
+    return averageGrade;
+}
+
+int Student::getCourse() const
+{
+    return course;
+}
+
+StudyGroup Student::getGroup() const
+{
+    return group;
+}
+
+void Student::addGrade(double grade)
+{
+    if (grade < 0.0 || grade > 5.0)
+    {
+        cout << "Ошибка: оценка должна быть от 0 до 5." << endl;
+        return;
+    }
+
+ 
+    averageGrade = (averageGrade + grade) / 2.0;
+}
+
+void Student::advanceCourse()
+{
+    if (course < 6)
+    {
+        course++;
+    }
+    else
+    {
+        cout << "Ошибка: студент уже находится на 6 курсе." << endl;
+    }
+}
+
+void Student::changeGroup(const StudyGroup& newGroup)
+{
+    if (newGroup.name.empty() || newGroup.number <= 0)
+    {
+        cout << "Ошибка: некорректная учебная группа." << endl;
+        return;
+    }
+
+    group = newGroup;
+}
