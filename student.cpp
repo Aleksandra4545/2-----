@@ -127,3 +127,20 @@ void Student::changeGroup(const StudyGroup& newGroup)
 
     group = newGroup;
 }
+
+void Student::printInfo() const
+{
+    cout << "-----------------------------" << endl;
+    cout << "Студент: " << name << endl;
+    cout << "Возраст: " << age << endl;
+    cout << "Средний балл: " << averageGrade << endl;
+    cout << "Курс: " << course << endl;
+    cout << "Группа: " << group.name
+         << "-" << group.number << endl;
+    cout << "-----------------------------" << endl;
+}
+
+int Student::getObjectCount()
+{
+    return objectCount;
+}
